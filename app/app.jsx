@@ -16,6 +16,7 @@ ReactDOM.render(
       <Route path={"about"} component={About}/>
       <Route path={"examples"} component={Examples}/>
       <IndexRoute component={Weather}/>
+      <h1>Should be Rendered</h1>
     </Route>
   </Router>,
   document.getElementById('app')

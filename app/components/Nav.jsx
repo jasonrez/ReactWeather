@@ -17,7 +17,13 @@ class Nav extends React.Component{
 
   onSearch(e){
     e.preventDefault();
-    this.toggleNavError();
+    let location = this.refs.navSearch.value;
+    let encodedLocation = encodeURIComponent(location);
+
+    if (location.length > 0) {
+      this.refs.navSearch.value = '';
+      window.location.hash = '#/?location=' + encodedLocation;
+    }
   }
 
   render(){
@@ -51,7 +57,7 @@ class Nav extends React.Component{
           <form onSubmit={this.onSearch.bind(this)}>
             <ul className='menu'>
               <li>
-                <input type='search' placeholder='Search Weather by city '/>
+                <input type='search' ref='navSearch' placeholder='Search Weather by city '/>
               </li>
               <li>
                 <input type='submit' className='button' value='Get Weather' />

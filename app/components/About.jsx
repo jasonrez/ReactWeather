@@ -8,7 +8,7 @@ let listStyle = {
 let About = props => {
   return(
     <div>
-      <h1 className='text-center' >About</h1>
+      <h1 className='text-center page-title' >About</h1>
       <p>React Weather App, From Andrew Meads React tutorial on udemy</p>
       <div className='callout'>
         Here are some of the tools I used:

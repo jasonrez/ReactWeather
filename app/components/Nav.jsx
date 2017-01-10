@@ -51,7 +51,7 @@ class Nav extends React.Component{
           <form onSubmit={this.onSearch.bind(this)}>
             <ul className='menu'>
               <li>
-                <input type='search' placeholder='searchWeather'/>
+                <input type='search' placeholder='Search Weather by city '/>
               </li>
               <li>
                 <input type='submit' className='button' value='Get Weather' />

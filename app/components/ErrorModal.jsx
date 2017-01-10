@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactDomServer from 'react-dom/server';
 
 class ErrorModal extends React.Component{
   constructor(props){
@@ -6,14 +8,8 @@ class ErrorModal extends React.Component{
   }
 
   componentDidMount(){
-
-    let modal = new Foundation.Reveal($('#error-modal'));
-    modal.open();
-  }
-
-  render(){
     let {title, message} = this.props;
-    return (
+    let modalMarkup = (
       <div id='error-modal' className='reveal tiny text-center' data-reveal=''>
         <h4>{title}</h4>
         <p>{message}</p>
@@ -24,6 +20,22 @@ class ErrorModal extends React.Component{
         </p>
       </div>
     );
+
+    let $modal = $(ReactDomServer.renderToString(modalMarkup));
+    $(ReactDOM.findDOMNode(this)).html($modal);
+
+    let modal = new Foundation.Reveal($('#error-modal'));
+    modal.open();
+  }
+
+  render(){
+
+
+    return (
+      <div>
+      </div>
+    );
+
   }
 }
 

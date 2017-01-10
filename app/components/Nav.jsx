@@ -1,16 +1,36 @@
 import React from 'react';
 import {Link, IndexLink} from 'react-router';
+import ErrorModal from 'ErrorModal';
 
 class Nav extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      navError : false
+    }
+  }
+
+  //setter to toggle navError
+  toggleNavError(){
+    this.setState({ navError: !this.state.navError})
   }
 
   onSearch(e){
     e.preventDefault();
-    alert('not yet wired up');
+    this.toggleNavError();
   }
+
   render(){
+    let {navError} = this.state;
+
+    function checkFeature(){
+      if (navError){
+        return (
+          <ErrorModal message='Not plugged in yet' cd={function() { alert('worked');}} />
+        )
+      }
+    }
+
     return (
       <div className='top-bar'>
         <div className='top-bar-left'>
@@ -28,7 +48,7 @@ class Nav extends React.Component{
           </ul>
         </div>
         <div className='top-bar-right'>
-          <form onSubmit={this.onSearch}>
+          <form onSubmit={this.onSearch.bind(this)}>
             <ul className='menu'>
               <li>
                 <input type='search' placeholder='searchWeather'/>
@@ -40,6 +60,7 @@ class Nav extends React.Component{
 
           </form>
         </div>
+        {checkFeature()}
       </div>
     );
 

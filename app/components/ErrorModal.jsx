@@ -5,7 +5,6 @@ class ErrorModal extends React.Component{
     super(props);
   }
 
-
   componentDidMount(){
 
     let modal = new Foundation.Reveal($('#error-modal'));
@@ -19,7 +18,7 @@ class ErrorModal extends React.Component{
         <h4>{title}</h4>
         <p>{message}</p>
         <p>
-          <button className='button hollow' data-close=''>
+          <button className='button hollow' data-close='' onClick={this.props.cd}>
             Okay
           </button>
         </p>
@@ -31,6 +30,7 @@ class ErrorModal extends React.Component{
 ErrorModal.defaultProps = {
   title: 'Error'
 }
+
 ErrorModal.propTypes = {
   title: React.PropTypes.string,
   message: React.PropTypes.string.isRequired
